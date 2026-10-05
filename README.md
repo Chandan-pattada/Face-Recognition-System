@@ -12,16 +12,45 @@ This is a complete GUI-based Face Recognition System built using Python, OpenCV,
 ## 📂 Project Structure
 
 ```
-face_recognition/
+Face-Recognition-System/
 │
-├── datasets/               # Collected face images organized by user
-├── main.py                 # Main Python script with GUI
-├── Trainer.yml             # Trained LBPH face recognition model (generated after training)
-├── id_to_name.json         # Mapping of user IDs to names
-├── image.png               # Background image for GUI (replace as needed)
-└── README.md               # This file
+├── assets/
+│   ├── branding/
+│   │   └── face_logo_from_reference.png
+│   │
+│   ├── home/
+│   │   ├── home_camera_icon.png
+│   │   ├── home_recognition_icon.png
+│   │   ├── home_settings_icon.png
+│   │   └── next_arrow_icon.png
+│   │
+│   ├── recognition/
+│   │   └── real_time_recognition_logo.png
+│   │
+│   └── training/
+│       ├── settings_gear_image.png
+│       └── train_face_photo.png
+│
+├── data/
+│   └── id_to_name.json
+│
+├── sample/
+│   └── 5.jpg
+│
+├── main.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
+### Generated Files
 
+The following files and folders are generated locally while using the application and are excluded from the GitHub repository:
+
+- `datasets/` – Stores collected face images organized by user.
+- `Trainer.yml` – Stores the trained LBPH face recognition model.
+- `.venv/` – Python virtual environment.
+- `venv/` – Additional local Python virtual environment.
+- `__pycache__/` – Python-generated cache files.
 ---
 
 ## ⚙️ Features
