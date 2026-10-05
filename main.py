@@ -21,9 +21,11 @@ import winsound
 # Face detection / dataset / LBPH recognition logic is retained.
 # ============================================================
 
-DATASET_PATH = "datasets"
-MODEL_PATH = "Trainer.yml"
-ID_TO_NAME_FILE = "id_to_name.json"
+BASE_DIR = Path(__file__).resolve().parent
+
+DATASET_PATH = str(BASE_DIR / "datasets")
+MODEL_PATH = str(BASE_DIR / "Trainer.yml")
+ID_TO_NAME_FILE = str(BASE_DIR / "data" / "id_to_name.json")
 MIN_IMAGES_PER_USER = 500
 CONFIDENCE_THRESHOLD = 60
 
@@ -540,8 +542,8 @@ class FaceRecognitionApp:
         # Use the face-recognition logo cropped from the supplied reference image.
         self.home_logo_photo = None
         logo_candidates = [
-            Path(__file__).resolve().parent / "venv" / "face_logo_from_reference.png",
-            Path(__file__).resolve().parent / "face_logo_from_reference.png",
+            BASE_DIR / "assets" / "branding" / "face_logo_from_reference.png",
+            BASE_DIR / "assets" / "branding" / "face_logo_from_reference.png",
         ]
         for logo_path in logo_candidates:
             if logo_path.exists():
@@ -575,7 +577,7 @@ class FaceRecognitionApp:
         cards.grid_rowconfigure(0, weight=1, uniform="home-cards")
 
         # Reference-image icons for the three home cards and the Open arrow.
-        asset_dir = Path(__file__).resolve().parent / "venv"
+        asset_dir = BASE_DIR / "assets" / "home"
         self.home_icon_photos = []
 
         def load_home_icon(filename, size):
@@ -818,7 +820,7 @@ class FaceRecognitionApp:
         root = tk.Frame(self.page, bg=self.BG)
         root.pack(fill="both", expand=True)
         self.collect_header_icon_photo = None
-        collect_icon_path = Path(__file__).resolve().parent / "venv" / "home_camera_icon.png"
+        collect_icon_path = BASE_DIR / "assets" / "home" / "home_camera_icon.png"
         if collect_icon_path.exists():
             collect_icon = Image.open(collect_icon_path).convert("RGBA")
             resample = Image.Resampling.LANCZOS if hasattr(Image, "Resampling") else Image.ANTIALIAS
@@ -962,7 +964,7 @@ class FaceRecognitionApp:
         self.clear()
         root = tk.Frame(self.page, bg=self.BG)
         root.pack(fill="both", expand=True)
-        gear_path = Path(__file__).resolve().parent / "venv" / "home_settings_icon.png"
+        gear_path = BASE_DIR / "assets" / "home" / "home_settings_icon.png"
         self.training_gear_photo = None
         if gear_path.exists():
             gear_image = Image.open(gear_path).convert("RGBA")
@@ -1043,7 +1045,7 @@ class FaceRecognitionApp:
         self.info_row(details, "Model File", "Trainer.yml", self.TEXT, 8, centered=True, font_size=9)
 
     def draw_training_face(self, canvas):
-        image_path = Path(__file__).resolve().parent / "venv" / "train_face_photo.png"
+        image_path = BASE_DIR / "assets" / "training" / "train_face_photo.png"
         self.training_face_source = None
         if image_path.exists():
             self.training_face_source = Image.open(image_path).convert("RGB")
@@ -1263,7 +1265,7 @@ class FaceRecognitionApp:
         self.clear()
         root = tk.Frame(self.page, bg=self.BG)
         root.pack(fill="both", expand=True)
-        logo_path = Path(__file__).resolve().parent / "venv" / "real_time_recognition_logo.png"
+        logo_path = BASE_DIR / "assets" / "recognition" / "real_time_recognition_logo.png"
         self.recognition_logo_photo = None
         if logo_path.exists():
             logo_image = Image.open(logo_path).convert("RGBA")
