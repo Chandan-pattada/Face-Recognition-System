@@ -87,46 +87,32 @@ pip install opencv-python opencv-contrib-python pillow numpy
    ```
 
 ---
-
 ## 🧠 How It Works
 
-1. **Collect Dataset**:
-   - Prompts for user ID and name
-   - Captures face images from webcam and stores them in `/datasets`
+1. **Collect Faces**
+   - Enter the user's name and ID.
+   - Captures face images using the webcam.
+   - Stores the collected face images in the `datasets/` directory.
+   - Captures up to 500 face samples for each user.
 
-2. **Train Recognizer**:
-   - Trains the LBPH recognizer on the dataset
-   - Saves the model and ID-name mapping
+2. **Train Recognizer**
+   - Uses the collected face dataset to train the LBPH face recognizer.
+   - Generates the trained recognition model as `Trainer.yml`.
+   - Stores the ID-to-name mapping in `data/id_to_name.json`.
 
-3. **Real-Time Recognition**:
-   - Recognizes faces from webcam input
-   - Displays name if recognized, otherwise shows "Unknown" and plays alert
-
----
-
-## 📸 Screenshot
-
-![Face Recognition GUI](preview.png) <!-- Replace with actual screenshot if available -->
+3. **Real-Time Recognition**
+   - Accesses the webcam for real-time face detection and recognition.
+   - Uses the trained LBPH model to identify registered users.
+   - Displays the recognized user's name and confidence.
+   - Displays `Unknown` when a face cannot be recognized.
 
 ---
 
 ## 🛠️ Future Improvements
 
-- Add face mask detection
-- Store recognition logs in a database
-- Deploy with Flask or Streamlit for web interface
-- Add email notification for unauthorized access
-
----
-
-## 👨‍💻 Developed By
-
-**Abdul Hazeez**  
-[Computer Science Engineering | KVG College of Engineering]  
-12+ years in sales | Hackathon Enthusiast | Full Stack & AI Developer  
-
----
-
-## 📃 License
-
-This project is open-source and free to use under the MIT License.
+- Improve recognition accuracy under different lighting conditions.
+- Add recognition history and access logs.
+- Store recognition records in a database.
+- Add additional security and authentication features.
+- Develop a web-based version of the system.
+- Improve face detection and recognition performance.
